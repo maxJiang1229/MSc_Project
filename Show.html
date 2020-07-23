@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Visualization!</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+
+<body>
+    <h1>Hello</h1>
+
+    <script>
+
+        d3.csv('cvs/doseresp.csv').then(data =>{
+            data.forEach(d => {
+                d['DoseRespID'] = +(d['DoseRespID'])
+                d['ObsID'] = +(d['ObsID'])
+                d['Dose'] = +(d['Dose'])
+                d['TotalAnimals'] = +(d['TotalAnimals'])
+                d['WithTumours'] = +(d['WithTumours'])
+            })
+            console.log(data)
+        })
+    </script>
+
+
+</body>
+</html>
