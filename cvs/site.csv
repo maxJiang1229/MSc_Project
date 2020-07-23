@@ -1,46 +1,46 @@
-"SiteID";"SiteName"
-3;"Liver"
-4;"Thyroid gland"
-5;"Mammary gland"
-6;"Lung"
-7;"Multiple tumour sites"
-8;"Forestomach"
-9;"Colon"
-11;"Uterus"
-13;"Kidney"
-16;"Adrenal medulla"
-17;"Harderian gland"
-19;"Testis"
-20;"Adrenal gland"
-21;"Stomach"
-23;"Nasal cavity"
-24;"Skin"
-27;"Pituitary gland"
-28;"Clitoral gland"
-33;"Zymbal's gland"
-37;"Pancreas"
-39;"Thymus gland"
-40;"Blood vessels"
-45;"Preputial gland"
-46;"Mammary tissue"
-49;"Urinary bladder"
-50;"Small intestine"
-55;"Lymphoreticular system"
-56;"Bile duct"
-58;"Ear canal"
-59;"Head"
-62;"Spleen"
-63;"Pylorus"
-64;"Stomach- glandular"
-66;"Ear canal- external"
-67;"Bone"
-69;"Ovary"
-71;"Vagina"
-91;"Abdomen"
-106;"Brown fat- dorsal"
-119;"Cervix"
-121;"Pancreas- exocrine"
-142;"Gall bladder/bile duct"
-147;"Ear"
-149;"Interscapulum"
-155;"Stomach- glandular; fundic region"
+SiteID,SiteName
+3,Liver
+4,Thyroid gland
+5,Mammary gland
+6,Lung
+7,Multiple tumour sites
+8,Forestomach
+9,Colon
+11,Uterus
+13,Kidney
+16,Adrenal medulla
+17,Harderian gland
+19,Testis
+20,Adrenal gland
+21,Stomach
+23,Nasal cavity
+24,Skin
+27,Pituitary gland
+28,Clitoral gland
+33,Zymbal's gland
+37,Pancreas
+39,Thymus gland
+40,Blood vessels
+45,Preputial gland
+46,Mammary tissue
+49,Urinary bladder
+50,Small intestine
+55,Lymphoreticular system
+56,Bile duct
+58,Ear canal
+59,Head
+62,Spleen
+63,Pylorus
+64,Stomach- glandular
+66,Ear canal- external
+67,Bone
+69,Ovary
+71,Vagina
+91,Abdomen
+106,Brown fat- dorsal
+119,Cervix
+121,Pancreas- exocrine
+142,Gall bladder/bile duct
+147,Ear
+149,Interscapulum
+155,Stomach- glandular; fundic region
