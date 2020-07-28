@@ -3,14 +3,130 @@
 <head>
     <title>Data Visualization!</title>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-  </head>
+</head>
 
 <body>
-    <h1>Hello</h1>
+
+
+<!--    <input class = "in" id = "search" type = "text" placeholder = "Search" />-->
+<!--    <button onclick = "show()">Search</button>-->
+<!--    <p class="content" id = "searchNum"></p>-->
+    <svg width = "1000" height = "600" id = "mainsvg" class = "svgs"></svg>
 
     <script>
+        let xScale, yScale
+        const xAxisLabel = 'WithTumours'
+        const yAxisLabel = 'Dose: mg/kg bw'
+        //let inputVal
+        //const uAxisLabel = 'DoseUnit'
 
-        d3.csv('cvs/doseresp.csv').then(data =>{
+
+        const searchText = document.getElementById('search')
+
+        //coordinate
+        const renderinit = function (data) {
+         xScale = d3.scaleLinear()
+         .domain([d3.min(data, d => d.WithTumours), d3.max(data, d => d.WithTumours)])
+         .range([0, innerWidth]);
+         // .domain(data.map(d => d.Dose))
+         // .range([0, innerWidth]);
+
+         yScale = d3.scaleBand()
+         .domain(data.map(d => d.Dose))
+         .range([0, innerHeight])
+         .padding(0.4);
+         // .domain([d3.max(data, d => d.WithTumours), d3.min(data, d => d.WithTumours)])
+         // .range([0, innerHeight]);
+
+         const g = svg.append('g').attr('transform', `translate(${margin.left}, ${margin.top})`)
+         .attr('id', 'maingroup');
+
+         const yAxis = d3.axisLeft(yScale);
+         g.append('g').call(yAxis);
+
+         const xAxis = d3.axisBottom(xScale);
+         g.append('g').call(xAxis).attr('transform', `translate(0, ${innerHeight})`);
+
+         // const yAxis = d3.axisLeft(yScale).tickSize(-innerWidth);
+         // const xAxis = d3.axisBottom(xScale).tickSize(-innerHeight);
+         const yAxisGroup = g.append('g').call(yAxis)
+        .attr('id', 'yaxis')
+        .append('text')
+        .text(yAxisLabel)
+        .attr('font-size', '1.5em')
+        .attr('transform', 'rotate(-90)') // y-axis label needs an additional transform;
+        .attr('x', -innerHeight / 2.5)
+        .attr('y', -60)
+        .attr('fill', 'black')
+         yAxisGroup.selectAll('.domain').remove();
+
+         const xAxisGroup = g.append('g').call(xAxis)
+         .attr('id', 'xaxis')
+         .attr('transform', `translate(${0}, ${innerHeight})`)
+         .append('text')
+         .text(xAxisLabel)
+         .attr('font-size', '1.5em')
+         .attr('x', innerWidth / 2)
+         .attr('y', 50)
+         .attr('fill', 'black');
+         xAxisGroup.selectAll('.domain').remove();
+
+
+
+
+         data.forEach(d => {
+             g.append('rect')
+             .attr('height', yScale.bandwidth())
+             .attr('fill', 'green')
+             .attr('width', xScale(d.WithTumours))
+             .attr('y', yScale(d.Dose))
+         });
+         d3.selectAll('.tick text').attr('font-size', '1.5em')
+
+
+
+        }
+
+        //for search
+        // function show() {
+        //
+        //     //const search1 = document.getElementById("searchNum").value
+        //
+        //     const inputBox = document.getElementById('search'),
+        //         content = document.querySelectorAll('.content')[0];
+		// 	// 获取input输入框中的值
+		// 	inputVal = inputBox.value;
+		// 	if(inputVal){
+		// 		content.innerHTML = inputVal;
+		// 	}else{
+		// 		alert('input something');
+		// 	}
+		// 	console.log(inputVal);
+        //
+        //
+        //
+        // }
+
+
+        const svg = d3.select('#mainsvg')
+
+        const width = +svg.attr('width')
+        const height = +svg.attr('height')
+
+        const margin = {top:60, right:50, bottom:60, left:100}
+
+        const innerWidth = width - margin.left - margin.right
+        const innerHeight = height - margin.top - margin.bottom
+
+
+
+
+        //const searchNumber = document.getElementsByClassName("searchNum")[0].value
+
+        d3.csv('cvs/doseresp2.csv').then(data => {
+
+
+            data = data.filter(d => d['ObsID'] == 5)
             data.forEach(d => {
                 d['DoseRespID'] = +(d['DoseRespID'])
                 d['ObsID'] = +(d['ObsID'])
@@ -18,9 +134,20 @@
                 d['TotalAnimals'] = +(d['TotalAnimals'])
                 d['WithTumours'] = +(d['WithTumours'])
             })
+
+            renderinit(data)
+
             console.log(data)
+            //console.log(inputVal)
         })
+
+
+
+
+
     </script>
+
+
 
 
 </body>
